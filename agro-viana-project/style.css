@@ -1,0 +1,23 @@
+/* Estilos Globais e Tipografia Profissional */
+body {
+    font-family: 'Times New Roman', serif;
+    background-color: #f0f2f5;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/* Estrutura Principal */
+.app-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* ------------------------------------- */
+/* 1. MENU LATERAL (SIDEBAR) */
+/* ------------------------------------- */
+#sidebar {
+    /* ... (Restante do CSS do AGRO_VIANA_APP_FINAL.html) ... */
+}
+/* ... TODO o CSS deve ser copiado do seu arquivo original e colado aqui ... */
