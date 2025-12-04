@@ -1,0 +1,238 @@
+/* GERAL */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* IMPORTANTE: Adicionar esta tag no <head> de todos os arquivos PHP/HTML: 
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+*/
+
+header {
+    background-color: #4CAF50; /* Verde Principal */
+    color: white;
+    padding: 15px; /* Reduz padding para telas menores */
+    display: flex;
+    /* Alinhamento para que o título fique em uma linha e os botões em outra, se necessário */
+    flex-direction: column; /* Coloca elementos em coluna por padrão */
+    justify-content: flex-start; 
+    align-items: flex-start;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+h1 {
+    margin: 0 0 10px 0; /* Espaçamento menor após o título */
+    font-size: 22px; /* Fonte ligeiramente menor */
+    width: 100%; /* Ocupa a linha toda */
+}
+
+/* OTIMIZAÇÃO: Container dos botões de navegação */
+nav {
+    display: flex;
+    gap: 8px; /* Espaçamento ligeiramente menor */
+    align-items: center;
+    flex-wrap: wrap; 
+    width: 100%; /* Ocupa a linha toda */
+}
+
+nav a, .btn-primary, .btn-back, .btn-action, .btn-submit {
+    color: white;
+    text-decoration: none;
+    padding: 8px 10px; /* Padding menor para caber mais botões */
+    border-radius: 4px;
+    background-color: #388E3C; /* Verde Escuro */
+    transition: background-color 0.3s;
+    font-weight: bold;
+    display: inline-block;
+    white-space: nowrap; 
+    font-size: 14px; /* Fonte menor para botões */
+    flex-grow: 1; /* Permite que botões se expandam um pouco, mas com limites */
+    text-align: center;
+}
+
+nav a:hover, .btn-primary:hover, .btn-back:hover, .btn-action:hover, .btn-submit:hover {
+    background-color: #66BB6A; 
+}
+
+main {
+    padding: 15px; /* Reduz padding */
+    max-width: 100%; /* Garante que ocupe a largura total */
+    margin: 15px auto;
+}
+
+/* Estilo para Mensagens de Feedback */
+.feedback {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    font-weight: bold;
+    border: 1px solid transparent;
+}
+
+.feedback.success {
+    background-color: #d4edda;
+    color: #155724;
+    border-color: #c3e6cb;
+}
+
+.feedback.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border-color: #f5c6cb;
+}
+
+/* Estilo para Formulários */
+.form-container {
+    background-color: white;
+    padding: 20px; /* Reduz padding */
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+fieldset {
+    border: 1px solid #ccc;
+    padding: 15px; /* Reduz padding */
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+legend {
+    font-weight: bold;
+    color: #4CAF50;
+    padding: 0 10px;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+/* Estilo para inputs e selects (Garante 100% da largura do container) */
+input[type="text"], input[type="number"], input[type="date"], select, textarea {
+    width: 100%; 
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Garante que o padding não exceda 100% da largura */
+}
+
+textarea {
+    min-height: 100px;
+}
+
+.btn-submit {
+    width: 100%; /* Botão de submit full-width */
+    padding: 12px;
+}
+
+/* === RESPONSIVIDADE DE TABELAS (DESKTOP) === */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    background-color: white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+th, td {
+    padding: 10px 8px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+th {
+    background-color: #E8F5E9; 
+    font-weight: bold;
+    color: #4CAF50;
+    font-size: 14px;
+}
+
+/* Container que permite a tabela rolar horizontalmente, para telas grandes que ainda não cabem */
+.table-responsive {
+    overflow-x: auto;
+    width: 100%;
+}
+
+
+/* === MEDIA QUERY PARA SMARTPHONES (Mobile-First Optimization) === */
+@media (max-width: 768px) {
+    
+    main {
+        padding: 10px; 
+    }
+    
+    /* Botões de Ação na Tabela - Faz com que "Alterar" e "Inativar" fiquem em bloco */
+    .btn-edit, .btn-delete {
+        display: block;
+        margin-right: 0;
+        margin-bottom: 5px;
+        text-align: center;
+        width: 100%; /* Ocupa a largura total da célula */
+    }
+
+    /* === REESTRUTURAÇÃO DA TABELA PARA MOBILE (INDEX.PHP & HISTORICO.PHP) === */
+    
+    /* Força a tabela a não ser mais uma tabela (torna cada TR um "card") */
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+    
+    /* Oculta o cabeçalho original da tabela (desktop) */
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+    
+    /* Adiciona uma borda visual para separar cada 'registro' (linha/card) */
+    tr {
+        border: 1px solid #ccc;
+        margin-bottom: 15px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    
+    /* Estiliza cada célula (agora como um bloco/cartão) */
+    td {
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%; /* Espaço para o Label */
+        text-align: right;
+        font-size: 14px;
+        white-space: normal; /* Permite que o texto quebre */
+    }
+    
+    /* Adiciona o LABEL baseado no atributo 'data-label' */
+    td:before {
+        content: attr(data-label);
+        position: absolute;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left;
+        font-weight: bold;
+        color: #4CAF50;
+    }
+
+    /* Ajuste para a célula de AÇÕES (que não precisa de label) */
+    td:last-child {
+        text-align: center;
+        padding-left: 10px; 
+    }
+    
+    /* Otimiza botões de navegação para caberem em 2 colunas */
+    nav a, .btn-primary, .btn-back, .btn-action {
+        flex-grow: 0;
+        min-width: calc(50% - 12px); /* Tenta colocar 2 por linha */
+        margin: 4px 0;
+    }
+}
